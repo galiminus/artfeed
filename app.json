@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Commfeed",
+    "description": "All commissions journals from FA.",
+    "slug": "commfeed",
+    "privacy": "unlisted",
+    "sdkVersion": "28.0.0",
+    "platforms": ["ios", "android"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#2e3b41"
+    },
+    "androidStatusBarColor": "#2e3b41",
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#2e3b41"
+    },
+    "android": {
+      "package": "im.howlr.commfeed",
+      "icon": "./assets/icon.png",
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+      ]
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "extra": {
+      "apiUrl": "https://api.commfeed.howlr.im/",
+      "appVersion": 1000
+    },
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "909022375386",
+    "firebase_url": "https://commfeed-233dd.firebaseio.com",
+    "project_id": "commfeed-233dd",
+    "storage_bucket": "commfeed-233dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909022375386:android:5c759fd9d809c527",
+        "android_client_info": {
+          "package_name": "im.howlr.commfeed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909022375386-oiej551tqc1gsq1pfnduedu7888ic27f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXQwNYEntny586Nhzc0rPP7qIKS1fXpBQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
