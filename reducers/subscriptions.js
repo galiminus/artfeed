@@ -3,8 +3,12 @@ export default function(state = [], action) {
     case 'SET_SUBSCRIPTIONS':
       return action.payload;
     case 'ADD_SUBSCRIPTION':
+      const author_slug = action.payload.author_slug.toLowerCase();
+      if (state.indexOf(author_slug) > -1) {
+        return state;
+      }
       return [
-        action.payload.author_slug.toLowerCase(),
+        author_slug,
         ...state
       ];
     case 'REMOVE_SUBSCRIPTION':
