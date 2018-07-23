@@ -37,7 +37,7 @@ class Subscriptions extends React.Component {
   state = {
   }
 
-  componentDidMount() {
+  async componentDidMount() {
   }
 
   renderSubscription(subscription, index) {

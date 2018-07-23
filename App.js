@@ -24,6 +24,10 @@ import OptOut from './components/OptOut';
 import Subscriptions from './components/Subscriptions';
 import AddSubscription from './components/AddSubscription';
 
+import getExpoToken from './getExpoToken';
+
+import { loadSubscriptions } from './actions/subscriptions';
+
 const MainNavigator = createStackNavigator(
   {
     JournalsRouter,
@@ -53,7 +57,36 @@ const DrawerNavigator = createDrawerNavigator(
   }
 );
 
+class ResourcesLoader extends React.Component {
+  state = {
+    loaded: false,
+  };
 
+  async componentDidMount() {
+    try {
+      let expo_token = await getExpoToken();
+      this.props.loadSubscriptions({ expo_token });
+    } catch (e) {
+      Toast.show({
+        text: e.message,
+      });
+    }
+    this.setState({ loaded: true });
+  }
+
+  render() {
+    return (
+      this.state.loaded ? <DrawerNavigator /> : <AppLoading />
+    )
+  }
+}
+
+const ConnectedResourcesLoader = connect(
+  undefined,
+  (dispatch) => ({
+    loadSubscriptions: (params) => dispatch(loadSubscriptions(params))
+  })
+)(ResourcesLoader);
 
 export default class App extends React.Component {
   state = {
@@ -84,7 +117,7 @@ export default class App extends React.Component {
         <PersistGate loading={<AppLoading />} persistor={persistor}>
           <StyleProvider style={getTheme()}>
             <Root>
-              {this.state.loaded ? <DrawerNavigator notification={this.props.exp.notification} /> : <AppLoading />}
+              {this.state.loaded ? <ConnectedResourcesLoader /> : <AppLoading />}
             </Root>
           </StyleProvider>
         </PersistGate>

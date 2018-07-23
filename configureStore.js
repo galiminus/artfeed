@@ -13,7 +13,7 @@ const persistedReducer = persistReducer(
   {
     key: 'root',
     storage,
-    whitelist: ['subscriptions'],
+    whitelist: [],
   },
   reducers
 );

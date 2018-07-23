@@ -1,5 +1,7 @@
 export default function(state = [], action) {
   switch (action.type) {
+    case 'SET_SUBSCRIPTIONS':
+      return action.payload;
     case 'ADD_SUBSCRIPTION':
       return [
         action.payload.author_slug.toLowerCase(),

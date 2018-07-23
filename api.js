@@ -42,6 +42,15 @@ export default {
       })
     );
   },
+  loadSubscriptions(params) {
+    return (
+      api.get(`/subscriptions.json`, params, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+    );
+  },
   addSubscription(subscription) {
     return (
       api.post(`/subscriptions.json`, { subscription }, {
