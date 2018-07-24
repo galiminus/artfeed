@@ -188,7 +188,7 @@ class Journal extends React.Component {
 }
 
 export default connect(
-  ({ subscriptions }) => ({ subscriptions }),
+  ({ subscriptions, expoToken }) => ({ subscriptions, expoToken }),
   (dispatch) => ({
     addSubscription: (params) => dispatch(addSubscription(params)),
     removeSubscription: (params) => dispatch(removeSubscription(params)),
@@ -197,25 +197,11 @@ export default connect(
     ...ownProps,
     ...stateProps,
     ...dispatchProps,
-    addSubscription: async () => {
-      try {
-        let expo_token = await getExpoToken();
-        dispatchProps.addSubscription({ author_slug: ownProps.navigation.state.params.journal.author_slug, expo_token });
-      } catch (e) {
-        Toast.show({
-          text: e.message,
-        });
-      }
+    addSubscription: () => {
+      dispatchProps.addSubscription({ author_slug: ownProps.navigation.state.params.journal.author_slug, expo_token: stateProps.expoToken });
     },
-    removeSubscription: async () => {
-      try {
-        let expo_token = await getExpoToken();
-        dispatchProps.removeSubscription({ author_slug: ownProps.navigation.state.params.journal.author_slug, expo_token });
-      } catch (e) {
-        Toast.show({
-          text: e.message,
-        });
-      }
+    removeSubscription: () => {
+      dispatchProps.removeSubscription({ author_slug: ownProps.navigation.state.params.journal.author_slug, expo_token: stateProps.expoToken });
     },
   })
 )(Journal);

@@ -18,7 +18,6 @@ import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation';
 import { View } from 'react-native';
 import { addSubscription } from '../actions/subscriptions';
-import getExpoToken from '../getExpoToken';
 
 const required = value => value ? undefined : 'Required'
 
@@ -139,7 +138,7 @@ const AddSubscriptionForm = reduxForm({ form: 'AddSubscriptionForm' })(AddSubscr
 const selector = formValueSelector('AddSubscriptionForm');
 
 const ConnectedAddSubscriptionForm = connect(
-  (state, { navigation }) => ({ value: selector(state, "author_slug") }),
+  ({ expoToken, ...state }, { navigation }) => ({ expoToken, value: selector(state, "author_slug") }),
   (dispatch) => ({
     addSubscription: (params) => dispatch(addSubscription(params)),
   }),
@@ -148,15 +147,8 @@ const ConnectedAddSubscriptionForm = connect(
     ...stateProps,
     ...dispatchProps,
     onSubmit: async (values) => {
-      try {
-        let expo_token = await getExpoToken();
-        dispatchProps.addSubscription({ author_slug: values.author_slug, expo_token });
-        ownProps.navigation.goBack();
-      } catch (e) {
-        Toast.show({
-          text: e.message,
-        });
-      }
+      dispatchProps.addSubscription({ author_slug: values.author_slug, expo_token: stateProps.expoToken });
+      ownProps.navigation.goBack();
     },
   })
 )(AddSubscriptionForm);

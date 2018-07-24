@@ -27,7 +27,6 @@ import { connect } from 'react-redux';
 import { WebBrowser } from 'expo';
 import EmptyList from './EmptyList';
 import timeAgo from '../timeAgo';
-import getExpoToken from '../getExpoToken';
 
 import variables from "../native-base-theme/variables/platform";
 import { removeSubscription } from '../actions/subscriptions';
@@ -76,6 +75,33 @@ class Subscriptions extends React.Component {
   }
 
   render() {
+    if (!this.props.expoToken) {
+      return (
+        <Container>
+          <Header>
+            <Left>
+              <Button transparent onPress={() => this.props.navigation.goBack()}>
+                <Icon name="arrow-back" />
+              </Button>
+            </Left>
+            <Body>
+              <Title>
+                Subscriptions
+              </Title>
+            </Body>
+            <Right></Right>
+          </Header>
+          <Content>
+            <EmptyList
+              iconName="error"
+              title={"That's weird"}
+              info="For an unknown technical reason, we are unable to register your phone to receive notifications. Please try again later!"
+            />
+          </Content>
+        </Container>
+      )
+    }
+
     return (
       <Container>
         <Header>
@@ -125,9 +151,10 @@ class Subscriptions extends React.Component {
 }
 
 const ConnectedSubscriptions = connect(
-  ({ subscriptions, subscriptionsRefresh }) => ({
+  ({ subscriptions, subscriptionsRefresh, expoToken }) => ({
     subscriptions,
-    subscriptionsRefresh
+    subscriptionsRefresh,
+    expoToken
   }),
   dispatch => ({
     removeSubscription: (payload) => dispatch(removeSubscription(payload))
@@ -136,14 +163,7 @@ const ConnectedSubscriptions = connect(
     ...stateProps,
     ...ownProps,
     removeSubscription: async (author_slug) => {
-      try {
-        let expo_token = await getExpoToken();
-        dispatchProps.removeSubscription({ author_slug, expo_token });
-      } catch (e) {
-        Toast.show({
-          text: e.message,
-        });
-      }
+      dispatchProps.removeSubscription({ author_slug, expo_token: stateProps.expo_token });
     }
   })
 )(Subscriptions);

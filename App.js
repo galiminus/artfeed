@@ -27,6 +27,7 @@ import AddSubscription from './components/AddSubscription';
 import getExpoToken from './getExpoToken';
 
 import { loadSubscriptions } from './actions/subscriptions';
+import { setExpoToken } from './actions/expoToken';
 
 const MainNavigator = createStackNavigator(
   {
@@ -63,15 +64,22 @@ class ResourcesLoader extends React.Component {
   };
 
   async componentDidMount() {
-    try {
-      let expo_token = await getExpoToken();
-      this.props.loadSubscriptions({ expo_token });
-    } catch (e) {
-      Toast.show({
-        text: e.message,
-      });
+    let expo_token;
+
+    if (!this.props.expoToken) {
+      expo_token = await getExpoToken();
+      this.props.setExpoToken(expo_token);
+    } else {
+      this.props.loadSubscriptions({ expo_token: this.props.expoToken });
+      this.setState({ loaded: true });
     }
-    this.setState({ loaded: true });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.expoToken !== nextProps.expoToken) {
+      this.props.loadSubscriptions({ expo_token: nextProps.expoToken });
+      this.setState({ loaded: true });
+    }
   }
 
   render() {
@@ -82,9 +90,10 @@ class ResourcesLoader extends React.Component {
 }
 
 const ConnectedResourcesLoader = connect(
-  undefined,
+  ({ expoToken }) => ({ expoToken }),
   (dispatch) => ({
-    loadSubscriptions: (params) => dispatch(loadSubscriptions(params))
+    loadSubscriptions: (params) => dispatch(loadSubscriptions(params)),
+    setExpoToken: (params) => dispatch(setExpoToken(params))
   })
 )(ResourcesLoader);
 

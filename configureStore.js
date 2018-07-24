@@ -13,7 +13,7 @@ const persistedReducer = persistReducer(
   {
     key: 'root',
     storage,
-    whitelist: [],
+    whitelist: ['expoToken'],
   },
   reducers
 );

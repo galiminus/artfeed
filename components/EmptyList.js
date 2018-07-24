@@ -27,7 +27,7 @@ class EmptyList extends Component {
       },
       emptyListInfo: {
         fontSize: 12,
-        lineHeight: 30,
+        lineHeight: 18,
         color: variables.darkForegroundColor,
         textAlign: 'center',
       },
