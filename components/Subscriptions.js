@@ -163,7 +163,7 @@ const ConnectedSubscriptions = connect(
     ...stateProps,
     ...ownProps,
     removeSubscription: async (author_slug) => {
-      dispatchProps.removeSubscription({ author_slug, expo_token: stateProps.expo_token });
+      dispatchProps.removeSubscription({ author_slug, expo_token: stateProps.expoToken });
     }
   })
 )(Subscriptions);

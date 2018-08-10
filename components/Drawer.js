@@ -13,7 +13,7 @@ import {
   Thumbnail
 } from 'native-base';
 import { WebBrowser } from 'expo';
-import { StyleSheet, PixelRatio } from 'react-native';
+import { StyleSheet, PixelRatio, Platform } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 import variables from "../native-base-theme/variables/platform";
 
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     marginTop: -1,
   },
   accountText: {
-    color: "#fff",
+    color: Platform.OS === 'ios' ? '#000' : "#fff",
     fontWeight: "200",
     fontSize: 20
   },

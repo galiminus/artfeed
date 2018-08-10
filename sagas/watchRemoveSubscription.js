@@ -8,6 +8,7 @@ function* removeSubscription({ payload }) {
     yield put(showSubscriptionsRefresh());
     while (true) {
       const response = yield api.removeSubscription(payload);
+
       if (response.ok) {
         yield put(hideSubscriptionsRefresh());
         return ;

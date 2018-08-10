@@ -26,15 +26,19 @@
       "permissions": [
       ]
     },
+    "ios": {
+      "bundleIdentifier": "im.howlr.commfeed",
+      "buildNumber": "1",
+      "supportsTablet": true,
+      "icon": "./assets/icon_ios.png",
+      "supportsTablet": true
+    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
     "extra": {
       "apiUrl": "https://api.commfeed.howlr.im/",
       "appVersion": 1000

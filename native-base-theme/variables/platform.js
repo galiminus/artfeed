@@ -134,7 +134,7 @@ export default {
   },
 
   // Drawer
-  drawerBrandBg: "#445861",
+  drawerBrandBg: Platform.OS === 'ios' ? "#e5ebed" : "#445861",
 
   // Footer
   footerHeight: 55,

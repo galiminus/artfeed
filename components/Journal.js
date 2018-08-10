@@ -107,7 +107,7 @@ class Journal extends React.Component {
               transparent
               onPress={() => this.props.navigation.goBack()}
             >
-              <Icon style={{ color: "white" }} name="close" />
+              <Icon style={{ color: Platform.OS === 'ios' ? '#007aff' : "white" }} name="close" />
             </Button>
           </Left>
           <Body>
@@ -123,14 +123,14 @@ class Journal extends React.Component {
                   transparent
                   onPress={() => this.props.removeSubscription()}
                 >
-                  <Icon style={{ color: "white" }} name="notifications" />
+                  <Icon style={{ color: Platform.OS === 'ios' ? '#007aff' : "white" }} name="notifications" />
                 </Button> :
                 <Button
                   rounded
                   transparent
                   onPress={() => this.props.addSubscription()}
                 >
-                  <Icon style={{ color: "white" }} name="notifications-none" />
+                  <Icon style={{ color:  Platform.OS === 'ios' ? '#007aff' : "white" }} name="notifications-none" />
                 </Button>
             }
           </Right>
