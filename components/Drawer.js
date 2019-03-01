@@ -12,7 +12,7 @@ import {
   Icon,
   Thumbnail
 } from 'native-base';
-import { WebBrowser } from 'expo';
+import { Linking } from 'expo';
 import { StyleSheet, PixelRatio, Platform } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 import variables from "../native-base-theme/variables/platform";
@@ -70,7 +70,7 @@ class AppDrawer extends React.Component {
         style={styles.container}
       >
         <View style={{ flex: 0 }}>
-          <List>
+          <List style={styles.borderList}>
             <ListItem last avatar style={styles.account}>
               <Left>
                 <Thumbnail circle source={require("../assets/icon.png")} />
@@ -86,6 +86,7 @@ class AppDrawer extends React.Component {
                 this.props.navigation.navigate("PrivacyPolicy");
                 this.props.navigation.dispatch(DrawerActions.toggleDrawer());
               }}
+              last
             >
               <Left>
                 <Icon style={styles.icon} name="assistant-photo" />
@@ -109,6 +110,40 @@ class AppDrawer extends React.Component {
               </Left>
               <Body>
                 <Text style={styles.itemText}>Opt-out from Commfeed</Text>
+              </Body>
+              <Right />
+            </ListItem>
+          </List>
+          <List>
+            <ListItem
+              icon
+              last
+              style={styles.item}
+              onPress={() => {
+                Linking.openURL('https://patreon.com/HowlrApp');
+              }}
+            >
+              <Left>
+                <Icon name="attach-money" style={styles.icon} />
+              </Left>
+              <Body>
+                <Text style={styles.itemText}>Donate to Howlr Lab</Text>
+              </Body>
+              <Right />
+            </ListItem>
+            <ListItem
+              icon
+              last
+              style={styles.item}
+              onPress={() => {
+                Linking.openURL(`https://lab.howlr.im`);
+              }}
+            >
+              <Left>
+                <Icon name="toys" style={styles.icon} />
+              </Left>
+              <Body>
+                <Text style={styles.itemText}>Discover more apps</Text>
               </Body>
               <Right />
             </ListItem>

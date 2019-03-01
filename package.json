@@ -2,13 +2,14 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.3.1",
     "apisauce": "^0.15.2",
-    "expo": "^28.0.0",
+    "expo": "^32.0.0",
     "javascript-time-ago": "^1.0.31",
     "native-base": "^2.7.1",
     "randomcolor": "^0.5.3",
-    "react": "16.3.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-28.0.0.tar.gz",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-autolink": "^1.4.0",
     "react-navigation": "2.0.4",
     "react-redux": "^5.0.7",
@@ -16,5 +17,8 @@
     "redux-form": "^7.4.2",
     "redux-persist": "^5.10.0",
     "redux-saga": "^0.16.0"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.0.0"
   }
 }
