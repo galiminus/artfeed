@@ -23,7 +23,7 @@ import {
 } from 'native-base';
 import { FlatList, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
-import { WebBrowser } from 'expo';
+import * as WebBrowser from 'expo-web-browser';
 import timeAgo from '../timeAgo';
 
 import variables from "../native-base-theme/variables/platform";
@@ -65,7 +65,7 @@ class Journals extends React.Component {
           <Text note>{timeAgo.format(new Date(journal.created_at))}</Text>
           {
             this.props.subscriptions.indexOf(journal.author_slug.toLowerCase()) > -1 ?
-              <Icon name="notifications-active" style={{ fontSize: 18, paddingTop: 5 }} /> :
+              <Icon name="notifications-active" style={{ fontSize: 18, paddingTop: 5 }} type="MaterialIcons" /> :
               null
           }
         </Right>

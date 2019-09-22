@@ -1,4 +1,6 @@
-import { Permissions, Notifications } from 'expo';
+import { Notifications } from 'expo';
+
+import * as Permissions from 'expo-permissions';
 
 export default async function getExpoToken() {
   const permissions = await Promise.all(
@@ -15,7 +17,7 @@ export default async function getExpoToken() {
     })
   );
   if (permissions.every((permission) => permission === 'granted')) {
-    const response = await Expo.Notifications.getExpoPushTokenAsync();
+    const response = await Notifications.getExpoPushTokenAsync();
 
     return (response);
   }

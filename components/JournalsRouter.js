@@ -22,7 +22,7 @@ const JournalsRouter = createMaterialTopTabNavigator(
       <Header hasSegment>
         <Left>
           <Button transparent onPress={() => props.navigation.dispatch(DrawerActions.toggleDrawer())}>
-            <Icon name="menu" />
+            <Icon name="menu" type="MaterialIcons" />
           </Button>
         </Left>
         <Body>
@@ -61,7 +61,7 @@ const JournalsRouter = createMaterialTopTabNavigator(
         </Body>
         <Right>
           <Button transparent onPress={() => props.navigation.navigate('Subscriptions')}>
-            <Icon name="add-alert" />
+            <Icon name="add-alert" type="MaterialIcons" />
           </Button>
         </Right>
       </Header>

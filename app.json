@@ -4,9 +4,9 @@
     "description": "All commissions journals from FA.",
     "slug": "commfeed",
     "privacy": "unlisted",
-    "sdkVersion": "32.0.0",
+    "sdkVersion": "35.0.0",
     "platforms": ["ios", "android"],
-    "version": "3.0.0",
+    "version": "5.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -20,7 +20,7 @@
       "backgroundColor": "#2e3b41"
     },
     "android": {
-      "versionCode": 3,
+      "versionCode": 5,
       "package": "im.howlr.commfeed",
       "icon": "./assets/icon.png",
       "googleServicesFile": "./google-services.json",
@@ -29,9 +29,9 @@
     },
     "ios": {
       "bundleIdentifier": "im.howlr.commfeed",
-      "buildNumber": "3",
+      "buildNumber": "5",
       "supportsTablet": false,
-      "icon": "./assets/icon_ios.png",
+      "icon": "./assets/icon_ios.png"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -42,6 +42,6 @@
     "extra": {
       "apiUrl": "https://commfeed.howlr.im/",
       "appVersion": 2000
-    },
+    }
   }
 }

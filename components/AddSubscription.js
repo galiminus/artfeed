@@ -61,7 +61,7 @@ class AddSubscription extends Component {
         <Header>
           <Left>
             <Button rounded transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
+              <Icon name="arrow-back" type="MaterialIcons" />
             </Button>
           </Left>
           <Body>
@@ -73,7 +73,7 @@ class AddSubscription extends Component {
               transparent
               disabled={!this.props.valid || !this.formatValidation(this.props.value)}
               onPress={this.props.handleSubmit}>
-              <Icon name="done" />
+              <Icon name="done" type="MaterialIcons" />
             </Button>
           </Right>
         </Header>

@@ -24,7 +24,7 @@ import {
 } from 'native-base';
 import { FlatList, RefreshControl, Linking } from 'react-native';
 import { connect } from 'react-redux';
-import { WebBrowser } from 'expo';
+import * as WebBrowser from 'expo-web-browser';
 import EmptyList from './EmptyList';
 import timeAgo from '../timeAgo';
 
@@ -68,7 +68,7 @@ class Subscriptions extends React.Component {
           <Text>{subscription}</Text>
         </Left>
         <Right>
-          <Icon name="more-vert" />
+          <Icon name="more-vert" type="MaterialIcons" />
         </Right>
       </ListItem>
     );
@@ -81,7 +81,7 @@ class Subscriptions extends React.Component {
           <Header>
             <Left>
               <Button transparent onPress={() => this.props.navigation.goBack()}>
-                <Icon name="arrow-back" />
+                <Icon name="arrow-back" type="MaterialIcons" />
               </Button>
             </Left>
             <Body>
@@ -107,7 +107,7 @@ class Subscriptions extends React.Component {
         <Header>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
+              <Icon name="arrow-back" type="MaterialIcons" />
             </Button>
           </Left>
           <Body>
@@ -117,7 +117,7 @@ class Subscriptions extends React.Component {
           </Body>
           <Right>
             <Button transparent onPress={() => this.props.navigation.navigate('AddSubscription')}>
-              <Icon name="add" />
+              <Icon name="add" type="MaterialIcons" />
             </Button>
           </Right>
         </Header>

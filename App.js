@@ -7,7 +7,11 @@ import {
   ActionSheet,
   Root,
 } from 'native-base';
-import { Constants, Notifications, Updates, SecureStore, AppLoading, Asset, Font } from 'expo';
+import { Notifications, Updates, AppLoading } from 'expo';
+import * as Font from 'expo-font';
+import { Asset } from 'expo-asset';
+import * as SecureStore from 'expo-secure-store';
+import Constants from 'expo-constants';
 import { Provider, connect } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 

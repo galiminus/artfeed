@@ -24,7 +24,7 @@ const PrivacyPolicy = (props) => (
     <Header>
       <Left>
         <Button transparent onPress={() => props.navigation.goBack()}>
-          <Icon name="close" />
+          <Icon name="close" type="MaterialIcons" />
         </Button>
       </Left>
       <Body>

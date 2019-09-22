@@ -35,7 +35,7 @@ class EmptyList extends Component {
 
     return (
       <Container style={styles.emptyList}>
-        <Icon style={styles.emptyListIcon} name={this.props.iconName} />
+        <Icon style={styles.emptyListIcon} name={this.props.iconName} type="MaterialIcons" />
         <Text style={styles.emptyListTitle}>{this.props.title}</Text>
         <Text style={styles.emptyListInfo}>{this.props.info}</Text>
         {this.props.children}

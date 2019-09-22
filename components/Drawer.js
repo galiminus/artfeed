@@ -89,7 +89,7 @@ class AppDrawer extends React.Component {
               last
             >
               <Left>
-                <Icon style={styles.icon} name="assistant-photo" />
+                <Icon style={styles.icon} name="assistant-photo" type="MaterialIcons" />
               </Left>
               <Body>
                 <Text style={styles.itemText}>Privacy Policy</Text>
@@ -106,7 +106,7 @@ class AppDrawer extends React.Component {
               }}
             >
               <Left>
-                <Icon style={styles.icon} name="remove-circle" />
+                <Icon style={styles.icon} name="remove-circle" type="MaterialIcons" />
               </Left>
               <Body>
                 <Text style={styles.itemText}>Opt-out from Commfeed</Text>
@@ -124,7 +124,7 @@ class AppDrawer extends React.Component {
               }}
             >
               <Left>
-                <Icon name="attach-money" style={styles.icon} />
+                <Icon name="attach-money" style={styles.icon} type="MaterialIcons" />
               </Left>
               <Body>
                 <Text style={styles.itemText}>Donate to Howlr Lab</Text>
@@ -140,7 +140,7 @@ class AppDrawer extends React.Component {
               }}
             >
               <Left>
-                <Icon name="toys" style={styles.icon} />
+                <Icon name="toys" style={styles.icon} type="MaterialIcons" />
               </Left>
               <Body>
                 <Text style={styles.itemText}>Discover more apps</Text>

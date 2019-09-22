@@ -24,7 +24,7 @@ import {
 } from 'native-base';
 import { FlatList, RefreshControl, StyleSheet, Platform, View, Linking } from 'react-native';
 import { connect } from 'react-redux';
-import { WebBrowser } from 'expo';
+import * as WebBrowser from 'expo-web-browser';
 import { addSubscription, removeSubscription } from '../actions/subscriptions';
 import Autolink from 'react-native-autolink';
 import getExpoToken from '../getExpoToken';
@@ -107,7 +107,7 @@ class Journal extends React.Component {
               transparent
               onPress={() => this.props.navigation.goBack()}
             >
-              <Icon style={{ color: Platform.OS === 'ios' ? '#007aff' : "white" }} name="close" />
+              <Icon style={{ color: Platform.OS === 'ios' ? '#007aff' : "white" }} name="close"  type="MaterialIcons" />
             </Button>
           </Left>
           <Body>
@@ -123,14 +123,14 @@ class Journal extends React.Component {
                   transparent
                   onPress={() => this.props.removeSubscription()}
                 >
-                  <Icon style={{ color: Platform.OS === 'ios' ? '#007aff' : "white" }} name="notifications" />
+                  <Icon style={{ color: Platform.OS === 'ios' ? '#007aff' : "white" }} name="notifications" type="MaterialIcons" />
                 </Button> :
                 <Button
                   rounded
                   transparent
                   onPress={() => this.props.addSubscription()}
                 >
-                  <Icon style={{ color:  Platform.OS === 'ios' ? '#007aff' : "white" }} name="notifications-none" />
+                  <Icon style={{ color:  Platform.OS === 'ios' ? '#007aff' : "white" }} name="notifications-none" type="MaterialIcons" />
                 </Button>
             }
           </Right>
