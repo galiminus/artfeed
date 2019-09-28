@@ -71,12 +71,13 @@ class ResourcesLoader extends React.Component {
     let expo_token;
 
     if (!this.props.expoToken) {
-      expo_token = await getExpoToken();
-      this.props.setExpoToken(expo_token);
+      getExpoToken().then((expo_token) => {
+        this.props.setExpoToken(expo_token);
+      });
     } else {
       this.props.loadSubscriptions({ expo_token: this.props.expoToken });
-      this.setState({ loaded: true });
     }
+    this.setState({ loaded: true });
   }
 
   componentWillReceiveProps(nextProps) {

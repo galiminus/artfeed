@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   account: {
-    paddingTop: variables.listItemPadding + variables.toolbarHeight - 50,
+    paddingTop: variables.listItemPadding + variables.toolbarHeight - 40,
     paddingBottom: variables.listItemPadding + 6,
     backgroundColor: variables.drawerBrandBg,
     marginTop: -1,
