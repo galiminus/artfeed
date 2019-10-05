@@ -18,6 +18,7 @@ import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation';
 import { View } from 'react-native';
 import { sendAuthorBlacklist } from '../actions/authorBlacklist';
+import HeaderIcon from './HeaderIcon';
 
 const required = value => value ? undefined : 'Required'
 
@@ -61,7 +62,7 @@ class OptOut extends Component {
         <Header>
           <Left>
             <Button rounded transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" type="MaterialIcons" />
+              <HeaderIcon name="back" />
             </Button>
           </Left>
           <Body>
@@ -73,7 +74,7 @@ class OptOut extends Component {
               transparent
               disabled={!this.props.valid || !this.formatValidation(this.props.value)}
               onPress={this.props.handleSubmit}>
-              <Icon name="done" type="MaterialIcons" />
+              <HeaderIcon name="done" />
             </Button>
           </Right>
         </Header>

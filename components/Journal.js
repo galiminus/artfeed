@@ -27,7 +27,8 @@ import { connect } from 'react-redux';
 import * as WebBrowser from 'expo-web-browser';
 import { addSubscription, removeSubscription } from '../actions/subscriptions';
 import Autolink from 'react-native-autolink';
-import getExpoToken from '../getExpoToken';
+import { setExpoToken } from '../actions/expoToken';
+import HeaderIcon from './HeaderIcon';
 
 import timeAgo from '../timeAgo';
 
@@ -69,6 +70,14 @@ const styles = StyleSheet.create({
 });
 
 class Journal extends React.Component {
+  handleAddSubscription() {
+    this.props.addSubscription();
+  }
+
+  handleRemoveSubscription() {
+    this.props.removeSubscription();
+  }
+
   render() {
     const { journal } = this.props.navigation.state.params;
     const links = [
@@ -107,7 +116,7 @@ class Journal extends React.Component {
               transparent
               onPress={() => this.props.navigation.goBack()}
             >
-              <Icon style={{ color: Platform.OS === 'ios' ? '#007aff' : "white" }} name="close"  type="MaterialIcons" />
+              <HeaderIcon style={{ color: Platform.OS === 'ios' ? '#007aff' : "white" }} name="close"  type="MaterialIcons" />
             </Button>
           </Left>
           <Body>
@@ -121,14 +130,14 @@ class Journal extends React.Component {
                 <Button
                   rounded
                   transparent
-                  onPress={() => this.props.removeSubscription()}
+                  onPress={() => this.handleRemoveSubscription()}
                 >
                   <Icon style={{ color: Platform.OS === 'ios' ? '#007aff' : "white" }} name="notifications" type="MaterialIcons" />
                 </Button> :
                 <Button
                   rounded
                   transparent
-                  onPress={() => this.props.addSubscription()}
+                  onPress={() => this.handleAddSubscription()}
                 >
                   <Icon style={{ color:  Platform.OS === 'ios' ? '#007aff' : "white" }} name="notifications-none" type="MaterialIcons" />
                 </Button>
@@ -192,16 +201,17 @@ export default connect(
   (dispatch) => ({
     addSubscription: (params) => dispatch(addSubscription(params)),
     removeSubscription: (params) => dispatch(removeSubscription(params)),
+    setExpoToken: (params) => dispatch(setExpoToken(params))
   }),
   (stateProps, dispatchProps, ownProps) => ({
     ...ownProps,
     ...stateProps,
     ...dispatchProps,
     addSubscription: () => {
-      dispatchProps.addSubscription({ author_slug: ownProps.navigation.state.params.journal.author_slug, expo_token: stateProps.expoToken });
+      dispatchProps.addSubscription({ author_slug: ownProps.navigation.state.params.journal.author_slug });
     },
     removeSubscription: () => {
-      dispatchProps.removeSubscription({ author_slug: ownProps.navigation.state.params.journal.author_slug, expo_token: stateProps.expoToken });
+      dispatchProps.removeSubscription({ author_slug: ownProps.navigation.state.params.journal.author_slug });
     },
   })
 )(Journal);

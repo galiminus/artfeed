@@ -18,13 +18,14 @@ import {
   Button,
   Body,
 } from 'native-base';
+import HeaderIcon from './HeaderIcon';
 
 const PrivacyPolicy = (props) => (
   <Container>
     <Header>
       <Left>
         <Button transparent onPress={() => props.navigation.goBack()}>
-          <Icon name="close" type="MaterialIcons" />
+          <HeaderIcon name="close" />
         </Button>
       </Left>
       <Body>

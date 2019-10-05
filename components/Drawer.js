@@ -120,22 +120,6 @@ class AppDrawer extends React.Component {
               last
               style={styles.item}
               onPress={() => {
-                Linking.openURL('https://patreon.com/HowlrApp');
-              }}
-            >
-              <Left>
-                <Icon name="attach-money" style={styles.icon} type="MaterialIcons" />
-              </Left>
-              <Body>
-                <Text style={styles.itemText}>Donate to Howlr Lab</Text>
-              </Body>
-              <Right />
-            </ListItem>
-            <ListItem
-              icon
-              last
-              style={styles.item}
-              onPress={() => {
                 Linking.openURL(`https://lab.howlr.im`);
               }}
             >

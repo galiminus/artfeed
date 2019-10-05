@@ -56,7 +56,7 @@ class Journals extends React.Component {
           </Text>
           <Text
             note
-            numberOfLines={1}
+            numberOfLines={2}
           >
             {journal.title}
           </Text>

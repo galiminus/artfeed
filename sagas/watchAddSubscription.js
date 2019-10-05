@@ -2,12 +2,20 @@ import { delay } from 'redux-saga';
 import { put, takeEvery, call } from 'redux-saga/effects';
 import { showSubscriptionsRefresh, hideSubscriptionsRefresh } from '../actions/subscriptionsRefresh';
 import api from '../api';
+import getExpoToken from '../getExpoToken';
+import { setExpoToken } from '../actions/expoToken';
 
 function* addSubscription({ payload }) {
   try {
     yield put(showSubscriptionsRefresh());
+    const expoToken = yield getExpoToken();
+    if (!expoToken) {
+      return;
+    }
+    yield put(setExpoToken(expoToken))
+
     while (true) {
-      const response = yield api.addSubscription(payload);
+      const response = yield api.addSubscription({ expo_token: expoToken, ...payload });
       if (response.ok) {
         yield put(hideSubscriptionsRefresh());
         return ;

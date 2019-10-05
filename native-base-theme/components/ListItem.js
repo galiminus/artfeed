@@ -1,16 +1,16 @@
 import { Platform, PixelRatio } from "react-native";
-
 import pickerTheme from "./Picker";
 import variable from "./../variables/platform";
+
 
 export default (variables = variable) => {
   const platform = variables.platform;
   const selectedStyle = {
     "NativeBase.Text": {
-      color: variables.listItemSelected
+      color: variables.brandPrimary
     },
     "NativeBase.Icon": {
-      color: variables.listItemSelected
+      color: variables.brandPrimary
     }
   };
 
@@ -156,7 +156,9 @@ export default (variables = variable) => {
         marginHorizontal: variables.listItemPadding,
         ".note": {
           color: variables.listNoteColor,
-          fontWeight: "200"
+          fontWeight: "200",
+          minHeight: 28,
+          fontSize: 12
         }
       },
       alignSelf: null,
@@ -195,7 +197,7 @@ export default (variables = variable) => {
       "NativeBase.Text": {
         ".note": {
           color: variables.listNoteColor,
-          fontWeight: "200"
+          fontWeight: "200",
         },
         alignSelf: null
       },
@@ -224,11 +226,22 @@ export default (variables = variable) => {
       },
       alignSelf: "center"
     },
+
     ".last": {
       marginLeft: -(variables.listItemPadding + 5),
       paddingLeft: (variables.listItemPadding + 5) * 2,
-      top: 1
+      top: 1,
+      "NativeBase.Left": {
+        borderBottomWidth: null,
+      },
+      "NativeBase.Body": {
+        borderBottomWidth: null,
+      },
+      "NativeBase.Right": {
+        borderBottomWidth: null,
+      }
     },
+
     ".avatar": {
       "NativeBase.Left": {
         flex: 0
@@ -256,18 +269,11 @@ export default (variables = variable) => {
         borderBottomWidth: variables.borderWidth,
         borderColor: variables.listBorderColor
       },
-      ".noBorder": {
-        "NativeBase.Body": {
-          borderBottomWidth: null
-        },
-        "NativeBase.Right": {
-          borderBottomWidth: null
-        }
-      },
       borderBottomWidth: null,
       paddingVertical: null,
       paddingRight: null
     },
+
     ".thumbnail": {
       "NativeBase.Left": {
         flex: 0
@@ -300,18 +306,11 @@ export default (variables = variable) => {
         borderBottomWidth: variables.borderWidth,
         borderColor: variables.listBorderColor
       },
-      ".noBorder": {
-        "NativeBase.Body": {
-          borderBottomWidth: null
-        },
-        "NativeBase.Right": {
-          borderBottomWidth: null
-        }
-      },
       borderBottomWidth: null,
       paddingVertical: null,
       paddingRight: null
     },
+
     ".icon": {
       ".last": {
         "NativeBase.Body": {
@@ -321,7 +320,7 @@ export default (variables = variable) => {
           borderBottomWidth: null
         },
         borderBottomWidth: variables.borderWidth,
-        borderColor: variables.listBorderColor
+        borderColor: variables.listBorderColor,
       },
       "NativeBase.Left": {
         "NativeBase.Button": {
@@ -343,7 +342,7 @@ export default (variables = variable) => {
           justifyContent: "center"
         },
         "NativeBase.Icon": {
-          width: variables.iconFontSize - 5,
+          width: variables.iconFontSize - 2,
           fontSize: variables.iconFontSize - 2
         },
         "NativeBase.IconNB": {
@@ -388,7 +387,7 @@ export default (variables = variable) => {
           paddingTop: 3
         },
         "NativeBase.Switch": {
-          marginRight: Platform.OS === "ios" ? undefined : -5,
+          marginRight: platform === "ios" ? undefined : -5,
           alignSelf: null
         },
         "NativeBase.PickerNB": {
@@ -404,14 +403,6 @@ export default (variables = variable) => {
         borderColor: variables.listBorderColor,
         paddingRight: variables.listItemPadding + 5
       },
-      ".noBorder": {
-        "NativeBase.Body": {
-          borderBottomWidth: null
-        },
-        "NativeBase.Right": {
-          borderBottomWidth: null
-        }
-      },
       borderBottomWidth: null,
       paddingVertical: null,
       paddingRight: null,
@@ -421,11 +412,6 @@ export default (variables = variable) => {
     ".noBorder": {
       borderBottomWidth: null
     },
-    ".noIndent": {
-      marginLeft: null,
-      padding: variables.listItemPadding,
-      paddingLeft: variables.listItemPadding + 6,
-    },
     alignItems: "center",
     flexDirection: "row",
     paddingRight: variables.listItemPadding + 6,
@@ -433,7 +419,7 @@ export default (variables = variable) => {
     marginLeft: variables.listItemPadding + 6,
     borderBottomWidth: 1 / PixelRatio.getPixelSizeForLayoutSize(1),
     backgroundColor: variables.listBg,
-    borderColor: variables.listBorderColor
+    borderColor: variables.listBorderColor,
   };
 
   return listItemTheme;

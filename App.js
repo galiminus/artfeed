@@ -28,10 +28,7 @@ import OptOut from './components/OptOut';
 import Subscriptions from './components/Subscriptions';
 import AddSubscription from './components/AddSubscription';
 
-import getExpoToken from './getExpoToken';
-
 import { loadSubscriptions } from './actions/subscriptions';
-import { setExpoToken } from './actions/expoToken';
 
 const MainNavigator = createStackNavigator(
   {
@@ -56,6 +53,7 @@ const DrawerNavigator = createDrawerNavigator(
     MainNavigator
   },
   {
+    drawerLockMode: Platform.OS === 'ios' ? 'locked-closed' : null,
     contentComponent: (props) => (
       <Drawer {...props} />
     )
@@ -63,33 +61,23 @@ const DrawerNavigator = createDrawerNavigator(
 );
 
 class ResourcesLoader extends React.Component {
-  state = {
-    loaded: false,
-  };
-
-  async componentDidMount() {
+  componentDidMount() {
     let expo_token;
 
-    if (!this.props.expoToken) {
-      getExpoToken().then((expo_token) => {
-        this.props.setExpoToken(expo_token);
-      });
-    } else {
+    if (this.props.expoToken) {
       this.props.loadSubscriptions({ expo_token: this.props.expoToken });
     }
-    this.setState({ loaded: true });
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.expoToken !== nextProps.expoToken) {
       this.props.loadSubscriptions({ expo_token: nextProps.expoToken });
-      this.setState({ loaded: true });
     }
   }
 
   render() {
     return (
-      this.state.loaded ? <DrawerNavigator /> : <AppLoading />
+     <DrawerNavigator />
     )
   }
 }
@@ -98,7 +86,6 @@ const ConnectedResourcesLoader = connect(
   ({ expoToken }) => ({ expoToken }),
   (dispatch) => ({
     loadSubscriptions: (params) => dispatch(loadSubscriptions(params)),
-    setExpoToken: (params) => dispatch(setExpoToken(params))
   })
 )(ResourcesLoader);
 

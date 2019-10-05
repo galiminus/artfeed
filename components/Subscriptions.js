@@ -27,6 +27,7 @@ import { connect } from 'react-redux';
 import * as WebBrowser from 'expo-web-browser';
 import EmptyList from './EmptyList';
 import timeAgo from '../timeAgo';
+import HeaderIcon from './HeaderIcon';
 
 import variables from "../native-base-theme/variables/platform";
 import { removeSubscription } from '../actions/subscriptions';
@@ -81,7 +82,7 @@ class Subscriptions extends React.Component {
           <Header>
             <Left>
               <Button transparent onPress={() => this.props.navigation.goBack()}>
-                <Icon name="arrow-back" type="MaterialIcons" />
+                <HeaderIcon name="back" />
               </Button>
             </Left>
             <Body>
@@ -107,7 +108,7 @@ class Subscriptions extends React.Component {
         <Header>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" type="MaterialIcons" />
+              <HeaderIcon name="back" />
             </Button>
           </Left>
           <Body>
@@ -117,7 +118,7 @@ class Subscriptions extends React.Component {
           </Body>
           <Right>
             <Button transparent onPress={() => this.props.navigation.navigate('AddSubscription')}>
-              <Icon name="add" type="MaterialIcons" />
+              <HeaderIcon name="add" />
             </Button>
           </Right>
         </Header>

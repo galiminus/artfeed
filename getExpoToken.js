@@ -16,10 +16,15 @@ export default async function getExpoToken() {
       return (finalStatus);
     })
   );
-  if (permissions.every((permission) => permission === 'granted')) {
-    const response = await Notifications.getExpoPushTokenAsync();
 
-    return (response);
+  if (permissions.every((permission) => permission === 'granted' || permission === 'undetermined')) {
+    try {
+      const response = await Notifications.getExpoPushTokenAsync();
+
+      return (response);
+    } catch (e) {
+      return (null);
+    }
   }
   return (null);
 }

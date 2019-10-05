@@ -8,6 +8,16 @@ import variables from "../native-base-theme/variables/platform";
 import Raffles from './Raffles.js';
 import Commissions from './Commissions.js';
 
+const SubscriptionsButton = (props) => (
+  props.expoToken ?
+    <Button transparent onPress={() => props.navigation.navigate('Subscriptions')}>
+      <Icon name="add-alert" type="MaterialIcons" />
+    </Button> :
+    null
+);
+
+const ConnectedSubscriptionsButton = connect(({ expoToken }) => ({ expoToken }))(SubscriptionsButton);
+
 const JournalsRouter = createMaterialTopTabNavigator(
   {
     Commissions,
@@ -60,9 +70,7 @@ const JournalsRouter = createMaterialTopTabNavigator(
           </Segment>
         </Body>
         <Right>
-          <Button transparent onPress={() => props.navigation.navigate('Subscriptions')}>
-            <Icon name="add-alert" type="MaterialIcons" />
-          </Button>
+          <ConnectedSubscriptionsButton navigation={props.navigation} />
         </Right>
       </Header>
     ),

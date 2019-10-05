@@ -17,6 +17,7 @@
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
     "react-native-autolink": "^1.4.0",
+    "react-native-svg": "^9.11.1",
     "react-navigation": "2.0.4",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
